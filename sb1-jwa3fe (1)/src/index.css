@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #3B82F6;
+  --color-secondary: #10B981;
+  --color-background: #F3F4F6;
+  --color-text: #1F2937;
+}
+
+body {
+  font-family: 'Comic Neue', cursive;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bangers', cursive;
+}
+
+.font-comic {
+  font-family: 'Comic Neue', cursive;
+}
+
+.font-title {
+  font-family: 'Bangers', cursive;
+}
+
+@layer components {
+  .comic-border {
+    @apply border-4 border-black shadow-[8px_8px_0_0_rgba(0,0,0,0.2)];
+  }
+
+  .anime-card {
+    @apply bg-white rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl comic-border;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white px-6 py-3 rounded-lg font-bold transform transition-all duration-300 hover:scale-105 hover:bg-blue-700 hover:shadow-lg comic-border;
+  }
+
+  .btn-secondary {
+    @apply bg-purple-500 text-white px-6 py-3 rounded-lg font-bold transform transition-all duration-300 hover:scale-105 hover:bg-purple-600 hover:shadow-lg comic-border;
+  }
+
+  .input-primary {
+    @apply w-full px-4 py-3 rounded-lg border-4 border-black focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300;
+  }
+
+  .badge {
+    @apply px-3 py-1 rounded-full text-sm font-semibold transform transition-all duration-300 hover:scale-110;
+  }
+
+  .badge-blue {
+    @apply bg-blue-100 text-blue-800 hover:bg-blue-200;
+  }
+
+  .badge-purple {
+    @apply bg-purple-100 text-purple-800 hover:bg-purple-200;
+  }
+
+  .badge-green {
+    @apply bg-green-100 text-green-800 hover:bg-green-200;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+  border: 3px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Card hover effects */
+.anime-card:hover .card-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Loading skeleton animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
